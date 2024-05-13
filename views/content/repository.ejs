@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Style for content container */
+        .content-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Responsive grid layout */
+            grid-gap: 20px;
+            /* Space between content items */
+        }
+        .parent-container{
+            height:600px;
+        }
+        /* Style for individual content item */
+        .content-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            transition: transform 0.3s ease;
+            /* Smooth hover effect */
+        }
+
+        .content-item:hover {
+            transform: translateY(-5px);
+            /* Move content item up on hover */
+        }
+
+        /* Style for content title */
+        .content-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            cursor: pointer;
+            /* Cursor pointer on hover */
+        }
+
+        /* Style for content description */
+        .content-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Style for content file link */
+        .content-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Style for search bar */
+        .search-bar {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            width: 300px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-container{
+            padding-top: 10px;
+            padding-left: 30%;
+        }
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('header.ejs') %>
+
+        <!-- Search bar -->
+        <div class="parent-container">
+            <div class="search-container">
+                <!-- Search bar -->
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search content by title...">
+                    <button onclick="searchContent()">Search</button>
+                </div>
+            </div>
+        
+            <!-- Content container -->
+            <div class="content-container">
+                <% contents.forEach(content => { %>
+                <!-- Individual content item -->
+                <div class="content-item">
+                    <!-- Content title (clickable) -->
+                    <div class="content-title" onclick="openContent('<%= content.pdfFileName %>')">
+                        <%= content.title %>
+                    </div>
+                    <!-- Content description -->
+                    <div class="content-description">
+                        <%= content.contentText %>
+                    </div>
+                    <!-- Content file link -->
+                    <a href="/path/to/content/<%= content.pdfFileName %>" class="content-link" target="_blank">View Content</a>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+
+        <%- include('footerProfile.ejs') %>
+
+            <script>
+                // Function to search content
+                function searchContent() {
+                    var input, filter, contentContainer, contentItems, title, i;
+                    input = document.getElementById('searchInput');
+                    filter = input.value.toUpperCase();
+                    contentContainer = document.querySelector('.content-container');
+                    contentItems = contentContainer.querySelectorAll('.content-item');
+
+                    for (i = 0; i < contentItems.length; i++) {
+                        title = contentItems[i].querySelector('.content-title');
+                        if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                            contentItems[i].style.display = '';
+                        } else {
+                            contentItems[i].style.display = 'none';
+                        }
+                    }
+                }
+
+                // Function to open content file
+                function openContent(fileName) {
+                    // Implement logic to open the content file (e.g., display modal, redirect to page, etc.)
+                    console.log('Opening content file:', fileName);
+                }
+            </script>
+</body>
+
+</html>

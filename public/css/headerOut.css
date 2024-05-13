@@ -1,0 +1,89 @@
+.navigationBar{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    border-bottom: 0.5px solid #ccc;
+    font-weight: 700;
+    height: min-content;
+}
+.Explore{
+    text-decoration: underline;
+    color: #6D31EDFF ;  
+}
+.divLogo{
+    display: flex;
+    justify-content: space-between; 
+    width:200px;
+    height: 60px;
+    padding-left: 16px;
+    align-items: center;
+
+}
+
+.divMenu{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width:400px;
+    height: 60px;
+    font-size: 18px;
+}
+
+.divProfile{
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center;
+    width:250px;
+    height: 60px;
+    padding-right: 10px;
+    color: #6D31EDFF ;  
+}
+.profileName{
+    color: #6D31EDFF ;  
+    font-size: 25px;
+}
+
+.circle {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    border-radius: 50%; /* Makes it a circle */
+    border: 1px solid rgb(217, 203, 246); /* Border around the circle */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    background-color: #D3C1FAFF;
+  }
+  
+.character {
+    font-size: 25px; /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+h3{
+    font-size: 28px; 
+    font-weight:bold;    
+    color: #6D31EDFF ;  
+}
+
+h3:hover{
+    color: #0056b3;
+}
+
+.imgLogo{
+    width:50px;
+    padding: 0px;
+}
+
+.btnM{
+    text-align: center;
+    border-radius: 50px;
+    color: #6D31EDFF ; 
+}
+.btnM:hover{
+    cursor: pointer;   
+}
+
+.imgBell{
+    width:10px;
+    height: 20px;
+}

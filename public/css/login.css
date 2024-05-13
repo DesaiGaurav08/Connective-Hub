@@ -1,0 +1,35 @@
+body{
+    background-color: #e0f2f1;
+}
+
+.divLog{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top:85px;
+}
+
+label{
+    display:block;
+}
+
+.form-control{
+    width: 350px;
+}
+
+.text-mutedLogin{
+    font-size: 10px;
+}
+
+.divLogin{
+    background-color: #fff;
+    width: 500px;
+    height: 450px;
+    padding: 50px;
+    border: 1px solid #ccc;
+}
+
+
+.h3{
+    color: #6D31EDFF ;
+}

@@ -1,0 +1,142 @@
+body {
+    background-color: #fafafb;
+}
+
+.navigationBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid #ccc;
+    font-weight: 700;
+    height: min-content;
+}
+
+.Explore {
+    text-decoration: underline;
+    color: #6D31EDFF;
+}
+
+.divLogo {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    height: 60px;
+    padding-left: 16px;
+    align-items: center;
+
+}
+
+.divMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 60px;
+    font-size: 18px;
+}
+
+.logoText {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.divProfile {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 250px;
+    height: 60px;
+    padding-right: 10px;
+    color: #6D31EDFF;
+}
+
+.profileName {
+    color: #6D31EDFF;
+    font-size: 25px;
+    padding-top: 0px;
+    margin: 0px;
+}
+
+.profileName:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.circle {
+    width: 40px;
+    /* Adjust size as needed */
+    height: 40px;
+    /* Adjust size as needed */
+    border-radius: 50%;
+    /* Makes it a circle */
+    border: 1px solid rgb(217, 203, 246);
+    /* Border around the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D3C1FAFF;
+}
+
+.character {
+    font-size: 25px;
+    /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #6D31EDFF;
+}
+
+
+.imgLogo {
+    width: 50px;
+    padding: 0px;
+}
+
+.btnM {
+    text-align: center;
+    border-radius: 50px;
+    color: #6D31EDFF;
+    text-decoration: none;
+}
+
+.btnM:hover{
+    color: #0056b3;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.imgBell {
+    width: 10px;
+    height: 20px;
+}
+
+
+
+
+
+
+/* Add content button styles */
+.content {
+    background-color: #6D31EDFF;
+    color: white;
+    border: none;
+    padding: 7px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.content:hover {
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+}

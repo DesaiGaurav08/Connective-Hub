@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="icon" type="image/favicon" href="/images/favicon.ico">
+</head>
+
+<body>
+  <div class="navigationBar" id="navbar">
+
+    <div class="divLogo">
+
+      <img class="imgLogo" src="/images/logo.png" alt>
+
+      <h3 class="logoText"> ExamEase </h3>
+
+
+    </div>
+
+    <div class="divMenu">
+      <a class="btnM Explore" href="/Dashboard/<%=name%>/<%=userId%>">Explore</u></a>
+      <a class="btnM" href="/post/<%=name%>/<%=userId%>">Posts</a>
+      <a class="btnM" href="/connect/<%=name%>/<%=userId%>">Connect</a>
+    </div>
+
+    <div class="divProfile">
+      <div class="circle">
+        <span class="character">
+          <%= name.charAt(0).toUpperCase() %>
+        </span>
+      </div>
+
+      <p class="profileName" id="profileName" >
+        <%= name %>
+      </p>
+
+    </div>
+  </div>
+
+
+  <script>
+    // Get the profile name link element
+    const profileNameLink = document.getElementById('profileName');
+  
+    // Add click event listener to the profile name link
+    profileNameLink.addEventListener('click', () => {
+      // Get the user's name
+      const userName = '<%= name %>';
+      const userId = '<%= userId %>'
+  
+      // Redirect to the user's profile page
+      window.location.href = `/profile/${userId}`;
+    });
+  </script>
+</body>
+
+</html>

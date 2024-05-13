@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="icon" type="image/favicon" href="/images/favicon.ico">
+</head>
+
+<body>
+  <div class="navigationBar" id="navbar">
+
+    <div class="divLogo">
+      <img class="imgLogo" src="/images/logo.png" alt>
+      <h3 class="logoText"> ExamEase </h3>
+    </div>
+
+    <div class="divMenu">
+      <a class="btnM Explore" href="/Dashboard/<%=name%>/<%=userId%>">Explore</u></a>
+      <a class="btnM" href="/post/<%=name%>/<%=userId%>">Posts</a>
+      <a class="btnM" href="/connect/<%=name%>/<%=userId%>">Connect</a>
+    </div>
+
+    <div class="divProfile">
+      <div class="circle">
+        <button class="content" id="addContentButton">Add Content</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Get the add content button element
+    const addContentButton = document.getElementById('addContentButton');
+
+    // Add click event listener to the add content button
+    addContentButton.addEventListener('click', () => {
+      // Redirect to the desired page
+      window.location.href = '/content/addContent/<%=name%>/<%=userId%>'; // Replace 'desired-page-url' with the actual URL
+    });
+  </script>
+</body>
+
+</html>

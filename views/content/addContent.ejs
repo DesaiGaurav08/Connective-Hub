@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Content</title>
+    <link rel="stylesheet" href="/css/addContent.css">
+</head>
+
+<body>
+    <%- include('header.ejs') %>
+    <div class="container">
+        <div class="options">
+            <label for="add-post">Add Post</label>
+        </div>
+        <form role="form" method="post" enctype="multipart/form-data" action="/content/addcontent/result/<%=name%>/<%=userId%>" on>
+            <div class="input-group">
+                <label for="content-title">Title:</label>
+                <input type="text" id="content-title" name="title">
+            </div>
+            <div class="input-group" id="content-input">
+                <label for="content-text">Text:</label>
+                <textarea id="content-text" name="contentText" rows="6"></textarea>
+                <!-- Image upload input (optional) -->
+                <label for="content-image">Image (Optional):</label>
+                <input type="file" id="content-image" name="uploaded_file" accept=".jpg, .jpeg">
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+
+    <%- include('footerProfile.ejs') %>
+    <script>
+        const form = document.getElementById('add-content-form');
+
+        // Function to validate the form before submission
+        function validateForm() {
+            // Check if all required fields are filled
+            if (!form.checkValidity()) {
+                // If any required fields are empty, prevent form submission
+                return false;
+            }
+
+            // If validation passed, return true to allow form submission
+            return true;
+        }
+
+        // Initial validation check
+        validateForm();
+    </script>
+</body>
+
+</html>

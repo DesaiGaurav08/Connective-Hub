@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="icon" type="image/favicon" href="/images/favicon.ico">
+    <style>
+        /* Add CSS styles here */
+        .post-content h3 {
+            font-size: 16px;
+            /* Reduced font size of the post title */
+            margin-bottom: 5px;
+            /* Reduced space below the post title */
+        }
+
+        .profile-posts {
+            display: grid;
+            /* Use CSS Grid layout for the posts */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            /* Create a grid with columns of minimum 200px width */
+            grid-gap: 20px;
+            /* Add some space between grid items */
+        }
+
+        .post {
+            width: 100%;
+            /* Posts will occupy 100% of the grid cell */
+        }
+
+        @media (max-width: 768px) {
+            .profile-posts {
+                grid-template-columns: repeat(2, 1fr);
+                /* Use 2 columns for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Nav-bar for the website -->
+    <%- include('headerProfile.ejs') %>
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-circle">
+                    <span>
+                        <%= (name).charAt(0).toUpperCase() %>
+                    </span>
+                </div>
+                <div class="profile-name">
+                    <%= name %>
+                </div>
+                <div class="profile-persona">
+                    <%= persona %>
+                </div>
+            </div>
+            <hr>
+            <div class="profile-sections">
+                <div class="switch-buttons">
+                    <button class="switch-button" onclick="showPosts()">Posts</button>
+                    <!-- Removed showNotes() function and button -->
+                    <!-- Removed showAbout() function and button -->
+                    <button class="switch-button connections-button" onclick="showConnections()">Connections</button>
+                </div>
+            </div>
+            <!-- Posts Section -->
+            <div class="profile-posts">
+                <% post.forEach(p=> { %>
+                    <div class="post">
+                        <!-- Post Image (Right) -->
+                        <% if (p.image) { %>
+                            <div class="post-image">
+                                <img src="/data/uploads/<%= p.image %>" alt="Post Image">
+                            </div>
+                            <% } %>
+                                <!-- Post Title and Content (Left) -->
+                                <div class="post-content">
+                                    <a href="/post/open/<%=name%>/<%=userId%>/<%=p.userId%>/<%=p._id%>">
+                                        <h3>
+                                            <%= p.title %>
+                                        </h3>
+                                    </a>
+                                    <!-- <p><%= p.content %></p> -->
+                                </div>
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+        <%- include('footerProfile.ejs') %>
+            <script>
+                function showPosts() {
+                    document.querySelector('.profile-posts').style.display = 'grid';
+                }
+
+                function showConnections() {
+                    alert("Showing Connections section!");
+                }
+
+                document.querySelectorAll('.post-content p').forEach(paragraph => {
+                    if (paragraph.textContent.length > 100) {
+                        let truncatedContent = paragraph.textContent.substring(0, 100);
+                        paragraph.innerHTML = `${truncatedContent}...<a class="read-more" href="/postView">Read more</a>`;
+                        paragraph.querySelector('.read-more').style.display = 'inline';
+                    }
+                });
+            </script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+    <link rel="stylesheet" href="/css/allPosts.css">
+    <link rel="icon" type="image/favicon" href="/images/favicon.ico">
+    <style>
+        /* Add CSS styles here */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .posts-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Adjust spacing between columns */
+        }
+
+        .post {
+            width: 45%; /* Make each post take 50% of the container width */
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .post h2 {
+            margin-bottom: 10px;
+            font-size: 18px; /* Increase font size for better readability */
+            cursor: pointer; /* Add pointer cursor to indicate clickability */
+        }
+
+        .post p {
+            margin-bottom: 10px;
+            font-size: 14px; /* Decrease font size for better readability */
+            display: none; /* Hide contentText */
+        }
+
+        .post a {
+            text-decoration: none; /* Remove default underline */
+            color: #333; /* Set initial text color */
+            transition: color 0.3s; /* Smooth transition for color change */
+        }
+
+        .post a:hover {
+            color: #007bff; /* Change color on hover */
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+        .post img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .post {
+                width: 100%; /* Make posts full width on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <%- include('header.ejs') %>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by post title">
+            <button onclick="searchPosts()">Search</button>
+        </div>
+
+        <!-- Horizontal Line -->
+        <hr>
+
+        <!-- Display Posts -->
+        <div class="posts-container">
+            <% for (let i = 0; i < post.length; i += 2) { %>
+                <div class="post">
+                    <a href="/post/open/<%=name%>/<%=userId%>/<%= post[i].userId %>/<%= post[i]._id %>">
+                        <h2><%= post[i].title %></h2>
+                    </a>
+                    <!-- Display post image if available -->
+                    <% if (post[i].image) { %>
+                        <img src="/data/uploads/<%= post[i].image %>" alt="Post Image">
+                    <% } %>
+                    <!-- <p><%= post[i].content %></p> -->
+                </div>
+                <% if (post[i+1]) { %>
+                    <div class="post">
+                        <a href="/post/open/<%=name%>/<%=userId%>/<%= post[i].userId %>/<%= post[i+1]._id %>">
+                            <h2><%= post[i+1].title %></h2>
+                        </a>
+                        <!-- Display post image if available -->
+                        <% if (post[i+1].image) { %>
+                            <img src="/data/uploads/<%= post[i+1].image %>" alt="Post Image">
+                        <% } %>
+                        <p style="display: none;"><%= post[i+1].contentText %></p>
+                    </div>
+                <% } else { %>
+                    <div class="post"></div> <!-- Empty div to maintain layout -->
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <%- include('footerProfile.ejs') %>
+
+    <!-- JavaScript for Search Functionality -->
+    <script>
+        function searchPosts() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const posts = document.querySelectorAll('.post');
+
+            posts.forEach(post => {
+                const title = post.querySelector('h2').textContent.toLowerCase();
+                if (title.includes(searchInput)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

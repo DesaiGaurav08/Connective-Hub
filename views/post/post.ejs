@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Post</title>
+    <link rel="stylesheet" href="/css/singlePost.css"> <!-- Link to your CSS file for styling -->
+    <link rel="icon" type="image/favicon" href="/images/favicon.ico">
+    <!-- Additional styles or scripts can be added here -->
+    <style>
+        /* CSS Styles for Single Post Page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .post-author {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .post-image {
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .post-content {
+            line-height: 1.6;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <%- include('header.ejs') %>
+
+
+    <!-- Main Content -->
+    <div class="post-container">
+        <article class="post">
+            <h1 class="post-title"><%= post[0].title %></h1>
+            <p class="post-author">Author: <%= authorname %></p>
+            <div class="post-content">
+                <%= post[0].contentText %>
+                <img src="/data/uploads/<%= post[0].image %>" alt="Post Image" class="post-image">
+            </div>
+        </article>
+    </div>
+
+    <%- include('footerProfile.ejs') %>
+</body>
+</html>

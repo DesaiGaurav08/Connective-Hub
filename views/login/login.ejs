@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/favicon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/login.css">
+
+  <title>Login</title>
+  <style>
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- login section -->
+  <div class="divLog">
+
+    <div class="divLogin">
+
+      <h3 class="h3">
+        Login
+        <br>
+        <small>
+          <pre class="text-muted text-mutedLogin">            To Access Your Account</pre>
+        </small>
+      </h3>
+      <div id="errorMessage" class="error-message"></div>
+      <% if (error) { %>
+        <script>
+          alert("<%= error %>");
+        </script>
+      <% } %>
+      <form id="loginForm" method="post" action="/login/authenticate">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+        </div>
+        <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+        <button id="resetButton" type="reset" class="btn btn-primary">Reset</button>
+      </form>
+
+      <br>
+
+      <div>
+        <pre>Don't have a account? <a href="/login/signUp">Sign up now</a></pre>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Function to handle form submission
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      // Get email and password input values
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Validate email and password fields
+      if (email.trim() === '' || password.trim() === '') {
+        // Display error message
+        const errorMessage = document.getElementById('errorMessage');
+        errorMessage.textContent = 'Please fill in both email and password fields.';
+        return; // Exit the function without submitting the form
+      }
+
+      // Clear any previous error message
+      document.getElementById('errorMessage').textContent = '';
+
+      // Submit the form
+      document.getElementById('loginForm').submit();
+    }
+
+    // Function to handle form reset
+    function handleReset() {
+      // Your form reset logic here
+      console.log('Form reset');
+    }
+
+    // Add event listener for form submission
+    document.getElementById('submitButton').addEventListener('click', handleSubmit);
+
+    // Add event listener for reset button
+    document.getElementById('resetButton').addEventListener('click', handleReset);
+  </script>
+
+
+</body>
+
+</html>

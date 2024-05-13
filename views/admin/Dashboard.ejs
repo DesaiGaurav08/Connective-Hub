@@ -1,0 +1,193 @@
+<!-- admin.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin.css">
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <%- include('headerAdmin.ejs') %>
+        <div id="container">
+            <button onclick="showAddContent()">Add Content</button>
+            <button onclick="showViewUsers()">View Users</button>
+            <button onclick="showViewContent()">View Content</button>
+            <button onclick="showViewPosts()">View Posts</button>
+
+            <div id="add-content-section">
+                <div class="section-title">
+                    <h2>Add Content</h2>
+                </div>
+                <form action="/admin/add-content/<%=adminId%>" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <label for="content-title">Title:</label>
+                        <input type="text" placeholder="minimum words" id="content-title" name="title">
+                    </div>
+                    <div class="input-group" id="content-input">
+                        <label for="content-text">Description:</label>
+                        <textarea id="content-text" name="contentText" placeholder="In one line" rows="6"></textarea>
+                        <label for="content-image">Content (PDF):</label>
+                        <input type="file" id="content-image" name="pdfFile" accept=".pdf">
+                    </div>
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+            </div>
+
+            <div id="view-users-section">
+                <div class="section-title">
+                    <h2>View Users</h2>
+                </div>
+                <table id="user-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% users.forEach(user=> { %>
+                            <tr>
+                                <td>
+                                    <%= user._id %>
+                                </td>
+                                <td>
+                                    <%= user.name %>
+                                </td>
+                                <td>
+                                    <%= user.email %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="view-content-section">
+                <div class="section-title">
+                    <h2>View Content</h2>
+                </div>
+                <table id="content-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>File</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% contents.forEach(item=> { %>
+                            <tr>
+                                <td>
+                                    <%= item.title %>
+                                </td>
+                                <td>
+                                    <%= item.contentText %>
+                                </td>
+                                <td>
+                                    <%= item.pdfFileName %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div id="view-posts-section">
+                <div class="section-title">
+                    <h2>View Posts</h2>
+                </div>
+                <table id="post-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <!-- <th>Author</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% posts.forEach(post => { %>
+                            <% const userId = post.userId; %>
+                            <% let authorName = 'Unknown'; %>
+                            <% users.forEach(user => { %>
+                                <% if (user._id.equals(userId)) { %>
+                                    <% authorName = user.username; %>
+                                <% } %>
+                            <% }); %>
+                            <tr>
+                                <td><%= post.title %></td>
+                                <td><%= post.contentText %></td>
+                                <td><%= authorName %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+
+        <script>
+            // admin.js
+
+            // admin.js
+
+            // Function to show "Add Content" section and hide other sections
+            function showAddContent() {
+                var addContentSection = document.getElementById('add-content-section');
+                var viewUsersSection = document.getElementById('view-users-section');
+                var viewContentSection = document.getElementById('view-content-section');
+                var viewPostsSection = document.getElementById('view-posts-section');
+                addContentSection.style.display = 'block';
+                viewUsersSection.style.display = 'none';
+                viewContentSection.style.display = 'none';
+                viewPostsSection.style.display = 'none';
+            }
+
+            // Function to show "View Users" section and hide other sections
+            function showViewUsers() {
+                var addContentSection = document.getElementById('add-content-section');
+                var viewUsersSection = document.getElementById('view-users-section');
+                var viewContentSection = document.getElementById('view-content-section');
+                var viewPostsSection = document.getElementById('view-posts-section');
+                addContentSection.style.display = 'none';
+                viewUsersSection.style.display = 'block';
+                viewContentSection.style.display = 'none';
+                viewPostsSection.style.display = 'none';
+            }
+
+            // Function to show "View Content" section and hide other sections
+            function showViewContent() {
+                var addContentSection = document.getElementById('add-content-section');
+                var viewUsersSection = document.getElementById('view-users-section');
+                var viewContentSection = document.getElementById('view-content-section');
+                var viewPostsSection = document.getElementById('view-posts-section');
+                addContentSection.style.display = 'none';
+                viewUsersSection.style.display = 'none';
+                viewContentSection.style.display = 'block';
+                viewPostsSection.style.display = 'none';
+            }
+            function showViewPosts() {
+                var addContentSection = document.getElementById('add-content-section');
+                var viewUsersSection = document.getElementById('view-users-section');
+                var viewContentSection = document.getElementById('view-content-section');
+                var viewPostsSection = document.getElementById('view-posts-section');
+
+                addContentSection.style.display = 'none';
+                viewUsersSection.style.display = 'none';
+                viewContentSection.style.display = 'none';
+                viewPostsSection.style.display = 'block';
+            }
+            // JavaScript to hide other sections when the page is first loaded
+            window.onload = function () {
+                showAddContent();
+            };
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+/* Style for the profile page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.profile-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #007bff;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-circle span {
+    color: #fff;
+    font-size: 48px;
+}
+.profile-name {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.profile-persona {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.profile-posts {
+    border-top: 2px solid #ddd;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.post {
+    width: calc(50% - 20px); /* Adjust the width as needed */
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    word-wrap: break-word; /* Wrap long text within posts */
+}
+.post-content {
+    font-size: 16px;
+}
+
+/* Style for the buttons */
+.switch-buttons {
+    text-align: center;
+    margin-bottom: 10px; /* Adjusted margin */
+}
+.switch-button {
+    margin: 0 5px; /* Adjusted margin */
+    padding: 10px 30px; /* Increased padding */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.switch-button:hover {
+    background-color: #0056b3;
+}
+.read-more {
+    color: blue;
+    cursor: pointer;
+    display: none;
+    margin-left: 5px;
+}
+/* Additional styles */
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0; /* Adjusted margin */
+}
+.profile-sections {
+    position: relative;
+    margin-bottom: 40px;
+}
+.about-button {
+    margin-top: 20px;
+}
+.vertical-line {
+    border-left: 1px solid #ddd;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* profile.css */
+
+/* Profile Posts */
+.profile-posts {
+    display: flex;
+    flex-direction: column;
+}
+
+.post {
+    display: flex;
+    align-items: flex-start; /* Align items at the start (left) */
+}
+
+.post-image {
+    flex: 0 0 30%; /* Set width of image container */
+    margin-right: 20px; /* Add spacing between image and content */
+}
+
+.post-image img {
+    width: 100%; /* Make image fill its container */
+}
+
+.post-content {
+    flex: 1; /* Expand content to fill available space */
+}
+
+.post-content h3 {
+    margin-top: 0; /* Remove top margin for title */
+}
+
+.post-content a {
+    text-decoration: none; /* Remove underline from post title link */
+    color: #333; /* Set color for post title link */
+}

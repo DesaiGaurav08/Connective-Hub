@@ -1,0 +1,62 @@
+body{
+    background-color: #e0f2f1;
+}
+.divSignUpMain{
+    background-color: #fff;
+    width: 450px;
+    height: min-content;
+    padding: 20px 25px;
+    border: 1px solid #ccc;
+}
+.divSignUp{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:10px;
+}
+
+.form-group{
+    max-width: 100%;
+}
+.form-control{
+    width:300px;
+}
+.control-label{
+    max-width: 100%;   
+}
+.help-block{
+    max-width: 100px;
+}
+
+.text-mutedLogin{
+    font-size: 10px;
+}
+
+.h3{
+    color: #6D31EDFF ;
+}
+
+.btn{
+    margin: 10px;
+    display: inline-flex;
+    width: fit-content;
+}
+
+.form-check-input{
+    margin-top: 8px;
+    margin-left: 0px;
+}
+
+.form-check-label{
+    margin-top: 1px;
+    margin-left: 15px;
+}
+.form-group{
+    padding: 0px;
+    margin-top: 10px;
+}
+
+.btnRegister{
+    margin-top: 8;
+    margin-left: 0px;
+}

@@ -1,0 +1,112 @@
+body {
+  background-color: #fafafb;
+}
+
+/* Middle Section */
+
+.Search_Content {
+  padding-top: 175px;
+  height: 500px;
+  width: 1263px;
+  background-image: url('/images/rock-wall-1845128_1280.jpg');
+  /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+  background-size: cover;
+  /* Cover the entire background */
+  background-position: center;
+  /* Center the background image */
+  background-repeat: no-repeat;
+  /* Do not repeat the background image */
+  /* Optionally, you can add more properties like background-attachment, background-color, etc. */
+
+}
+
+.search-container {
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Test Section & StudyDocs */
+
+.test_Section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.child {
+  width: 200px;
+  height: 200px;
+  background-color: #3498db;
+  /* Blue color */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+}
+
+.child:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.child a {
+  color: #fff;
+  /* White text */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.test_Section {
+  margin-bottom: 50px;
+  /* Increase space between squares and footer */
+}
+
+
+.quote-container {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%;
+  text-align: center;
+  background-color: #f0f8ff; /* Light blue background */
+  color: aliceblue; /* Text color */
+}
+
+.quote-text {
+  font-size: 36px; /* Larger font size */
+  font-weight: bold; /* Bold text */
+  margin-bottom: 20px;
+}
+
+.quote-author {
+  font-size: 24px; /* Larger font size */
+  font-style: italic; /* Italic text */
+}

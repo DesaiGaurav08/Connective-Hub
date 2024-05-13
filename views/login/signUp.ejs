@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/favicon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/signUp.css">
+
+    <title>Register</title>
+</head>
+
+<body>
+
+    <div class="divSignUp">
+
+        <div class="divSignUpMain">
+
+            <h3 class="h3">
+                SignUp
+                <br>
+                <small>
+                    <pre class="text-muted text-mutedLogin">            To Explore more</pre>
+                </small>
+            </h3>
+
+            <div id="error-message" style="color: red; margin-bottom: 10px;"></div>
+            <form class="form-horizontal" role="form" method="post" action="/login/register"
+                onsubmit="return validateForm(event)">
+
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="name" placeholder="Full Name" class="form-control" name="name" autofocus>
+                        <span class="help-block">eg.: Smith </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="Email" class="form-control" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" class="form-control"
+                            name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Retype Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="retypePassword" placeholder="retypePassword" class="form-control">
+                    </div>
+                </div>
+                <!-- /.form-group -->
+
+                
+                <div class="form-group">
+                    <label for="Exam" class="control-label col-sm-3">Persona</label>
+                    <div class="col-sm-9">
+                        <!-- <input type="text" id="Exam" placeholder="more about yourself" class="form-control"> -->
+                        <textarea id="Exam" placeholder="more about yourself" class="form-control"
+                            name="persona"></textarea>
+                    </div>
+                    <!-- /.form-group -->
+                    <!-- /.form-group -->
+                    <!-- <pre>  To register as an Institute <a href="signUpInst">Click Here.</a></pre> -->
+                    <div class="form-group">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <button type="submit" class="btn btnRegister btn-primary btn-block">Register</button>
+
+                            <button type="reset" class="btn btnRegister btn-primary btn-block">Reset</button>
+                        </div>
+                    </div>
+            </form> <!-- /form -->
+            <div>
+                <pre>already have a account? <a href="/login">Sign up now</a></pre>
+            </div>
+
+
+        </div>
+    </div>
+    <script>
+        function validateForm(event) {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var retypePassword = document.getElementById("retypePassword").value;
+            var errorMessage = document.getElementById('error-message');
+
+            if (!name || !email || !password || !retypePassword) {
+                errorMessage.innerText = 'All fields are required';
+                event.preventDefault();
+                return false;
+            } else if (password !== retypePassword) {
+                errorMessage.innerText = 'Passwords do not match';
+                event.preventDefault();
+                return false;
+            } else {
+                errorMessage.innerText = '';
+                return true;
+            }
+        }
+        document.getElementById('register-form').addEventListener('submit', validateForm);
+    </script>
+</body>
+
+</html>

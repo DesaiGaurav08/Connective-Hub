@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Content Result</title>
+    <link rel="stylesheet" href="/css/addContent.css">
+    <style>
+        /* Additional styles to match alignment */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f4f7; /* Light blue background */
+            font-family: Arial, sans-serif; /* Standard font */
+            color: #333; /* Dark text color */
+        }
+
+        .container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result {
+            background-color: #fff; /* White background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            text-align: center;
+        }
+
+        .counter {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #007bff; /* Blue color for the counter */
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('header.ejs') %>
+    <div class="container">
+        <div class="divider"></div>
+        <div class="result">
+            <p style="color: #007bff;"><%= resultMessage %></p> <!-- Blue color for the message -->
+            <div class="counter">Redirecting in <span id="counter">3</span> seconds...</div>
+        </div>
+    </div>
+    <%- include('footerProfile.ejs') %>
+    <script>
+        // Function to update the counter
+        function updateCounter() {
+            const counterElement = document.getElementById('counter');
+            let count = 3; // Initial count
+            const interval = setInterval(function () {
+                count--;
+                counterElement.textContent = count; // Update counter text
+                if (count === 0) {
+                    clearInterval(interval); // Stop the interval
+                    // Redirect to profile page after 3 seconds
+                    window.location.href = '/profile/<%=userId%>';
+                }
+            }, 1000); // Update every second
+        }
+
+        // Call the function when the page loads
+        updateCounter();
+    </script>
+</body>
+
+</html>
